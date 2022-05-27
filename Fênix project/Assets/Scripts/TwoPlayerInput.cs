@@ -1,0 +1,83 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class TwoPlayerInput : MonoBehaviour
+{
+    [Header("Inputs")]
+    [SerializeField] GameObject player1;
+    [SerializeField] GameObject player2;
+
+    [Header("Setas")]
+    [SerializeField] GameObject setaP1;
+    [SerializeField] GameObject setaP2;
+
+    [Header("Placar")]
+    [SerializeField] TextMeshProUGUI placar1;
+    [SerializeField] TextMeshProUGUI placar2;
+
+    [Header("Ganhou!")]
+    [SerializeField] GameObject venceu1;
+    [SerializeField] GameObject venceu2;
+
+    int pontos1;
+    int pontos2;
+
+    void Start()
+    {
+        player1.SetActive(true);
+        player2.SetActive(false);
+        setaP1.SetActive(true);
+        setaP2.SetActive(false);
+        pontos1 = 0;
+        pontos2 = 0;
+    }
+
+    public void MaisPontos (int player, int qtd) {
+        switch (player)
+        {
+            case 1: pontos1 += qtd; placar1.text = pontos1.ToString(); break;
+            case 2: pontos2 += qtd; placar2.text = pontos2.ToString(); break;
+            default: break;
+        }
+
+        if (pontos1 >= 10) {
+            venceu1.SetActive(true);
+            FindObjectOfType<Tabuleiro>().enabled = false;
+        }
+
+        if (pontos2 >= 10) {
+            venceu2.SetActive(true);
+            FindObjectOfType<Tabuleiro>().enabled = false;
+        }
+    }
+
+    public void VezDoPlayer1() {
+        player1.SetActive(false);
+        player2.SetActive(false);
+        StartCoroutine("Espera1");
+    }
+
+    public void VezDoPlayer2() {
+        player1.SetActive(false);
+        player2.SetActive(false);
+        StartCoroutine("Espera2");
+    }
+
+    IEnumerator Espera1 () {
+        yield return new WaitForSeconds(1f);
+        player1.SetActive(true);
+        player2.SetActive(false);
+        setaP1.SetActive(true);
+        setaP2.SetActive(false);
+    }
+
+    IEnumerator Espera2 () {
+        yield return new WaitForSeconds(1f);
+        player1.SetActive(false);
+        player2.SetActive(true);
+        setaP1.SetActive(false);
+        setaP2.SetActive(true);
+    }
+}

@@ -31,7 +31,7 @@ public class Combination : MonoBehaviour
         {
             id = -1;
             if (de3) id = Random.Range(0,8);
-            if (de4) id = Random.Range(8,26);
+            if (de4) id = Random.Range(8,25);
             repetido = FindObjectOfType<Tabuleiro>().ExisteFigura(id);
         }
 
