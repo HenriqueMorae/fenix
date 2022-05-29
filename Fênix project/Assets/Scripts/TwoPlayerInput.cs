@@ -21,6 +21,9 @@ public class TwoPlayerInput : MonoBehaviour
     [SerializeField] GameObject venceu1;
     [SerializeField] GameObject venceu2;
 
+    [Header("Peças de Preview")]
+    [SerializeField] GameObject[] pecasPreview = new GameObject[14];
+
     int pontos1;
     int pontos2;
 
@@ -30,6 +33,7 @@ public class TwoPlayerInput : MonoBehaviour
         player2.SetActive(false);
         setaP1.SetActive(true);
         setaP2.SetActive(false);
+        DesligaBolinhas();
         pontos1 = 0;
         pontos2 = 0;
     }
@@ -54,12 +58,14 @@ public class TwoPlayerInput : MonoBehaviour
     }
 
     public void VezDoPlayer1() {
+        DesligaBolinhas();
         player1.SetActive(false);
         player2.SetActive(false);
         StartCoroutine("Espera1");
     }
 
     public void VezDoPlayer2() {
+        DesligaBolinhas();
         player1.SetActive(false);
         player2.SetActive(false);
         StartCoroutine("Espera2");
@@ -79,5 +85,12 @@ public class TwoPlayerInput : MonoBehaviour
         player2.SetActive(true);
         setaP1.SetActive(false);
         setaP2.SetActive(true);
+    }
+
+    void DesligaBolinhas() {
+        foreach (GameObject preview in pecasPreview)
+        {
+            preview.SetActive(false);
+        }
     }
 }
