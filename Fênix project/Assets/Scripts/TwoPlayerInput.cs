@@ -26,9 +26,11 @@ public class TwoPlayerInput : MonoBehaviour
 
     int pontos1;
     int pontos2;
+    bool completouAlgo;
 
     void Start()
     {
+        completouAlgo = false;
         player1.SetActive(true);
         player2.SetActive(false);
         setaP1.SetActive(true);
@@ -36,6 +38,10 @@ public class TwoPlayerInput : MonoBehaviour
         DesligaBolinhas();
         pontos1 = 0;
         pontos2 = 0;
+    }
+
+    public void Completou() {
+        completouAlgo = true;
     }
 
     public void MaisPontos (int player, int qtd) {
@@ -73,6 +79,12 @@ public class TwoPlayerInput : MonoBehaviour
 
     IEnumerator Espera1 () {
         yield return new WaitForSeconds(1f);
+        
+        if (completouAlgo) {
+            completouAlgo = false;
+            yield return new WaitForSeconds(1f);
+        }
+        
         player1.SetActive(true);
         player2.SetActive(false);
         setaP1.SetActive(true);
@@ -81,6 +93,12 @@ public class TwoPlayerInput : MonoBehaviour
 
     IEnumerator Espera2 () {
         yield return new WaitForSeconds(1f);
+
+        if (completouAlgo) {
+            completouAlgo = false;
+            yield return new WaitForSeconds(1f);
+        }
+
         player1.SetActive(false);
         player2.SetActive(true);
         setaP1.SetActive(false);

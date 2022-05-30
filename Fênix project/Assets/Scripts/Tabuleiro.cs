@@ -357,6 +357,12 @@ public class Tabuleiro : MonoBehaviour
         if (qualFigura > 7 && multiplayer) FindObjectOfType<TwoPlayerInput>().MaisPontos(playerAtual,4);
         else if (qualFigura <= 7 && multiplayer) FindObjectOfType<TwoPlayerInput>().MaisPontos(playerAtual,3);
 
+        FindObjectOfType<TwoPlayerInput>().Completou();
+        StartCoroutine("Continua");        
+    }
+
+    IEnumerator Continua() {
+        yield return new WaitForSeconds(1f);
         ReposicionarPecas();
     }
 
@@ -395,7 +401,7 @@ public class Tabuleiro : MonoBehaviour
             posicaoNoTabuleiro = peca.Posicao();
 
             if (posicaoNoTabuleiro[0] == linhaFinal && posicaoNoTabuleiro[1] == colunaFinal) {
-                Destroy(peca.gameObject);
+                peca.CompletouFigura();
             }
         }
     }

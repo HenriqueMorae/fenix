@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Peca : MonoBehaviour
 {
+    [Header("Completo")]
+    [SerializeField] Image completo;
+
     int colunaOndeEstou;
     int linhaOndeEstou;
 
@@ -18,5 +22,14 @@ public class Peca : MonoBehaviour
         position[0] = linhaOndeEstou;
         position[1] = colunaOndeEstou;
         return position;
+    }
+
+    public void CompletouFigura() {
+        completo.color = Color.white;
+        LeanTween.alpha(gameObject.GetComponent<RectTransform>(), 0f, 1f).setOnComplete(Sumindo);
+    }
+
+    void Sumindo() {
+        Destroy(gameObject);
     }
 }
