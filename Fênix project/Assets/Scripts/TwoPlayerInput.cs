@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class TwoPlayerInput : MonoBehaviour
 {
@@ -13,9 +13,9 @@ public class TwoPlayerInput : MonoBehaviour
     [SerializeField] GameObject setaP1;
     [SerializeField] GameObject setaP2;
 
-    [Header("Placar")]
-    [SerializeField] TextMeshProUGUI placar1;
-    [SerializeField] TextMeshProUGUI placar2;
+    [Header("Vida")]
+    [SerializeField] Slider vida1;
+    [SerializeField] Slider vida2;
 
     [Header("Ganhou!")]
     [SerializeField] GameObject venceu1;
@@ -24,8 +24,8 @@ public class TwoPlayerInput : MonoBehaviour
     [Header("Peças de Preview")]
     [SerializeField] GameObject[] pecasPreview = new GameObject[14];
 
-    int pontos1;
-    int pontos2;
+    int health1;
+    int health2;
     bool completouAlgo;
     bool fim;
 
@@ -38,31 +38,32 @@ public class TwoPlayerInput : MonoBehaviour
         setaP1.SetActive(true);
         setaP2.SetActive(false);
         DesligaBolinhas();
-        pontos1 = 0;
-        pontos2 = 0;
+        health1 = 10;
+        health2 = 10;
     }
 
     public void Completou() {
         completouAlgo = true;
     }
 
-    public void MaisPontos (int player, int qtd) {
+    // this player did this damage
+    public void Dano (int player, int qtd) {
         if (fim) return;
 
         switch (player)
         {
-            case 1: pontos1 += qtd; placar1.text = pontos1.ToString(); break;
-            case 2: pontos2 += qtd; placar2.text = pontos2.ToString(); break;
+            case 1: health2 -= qtd; vida2.value = health2/10f; break;
+            case 2: health1 -= qtd; vida1.value = health1/10f; break;
             default: break;
         }
 
-        if (pontos1 >= 10) {
+        if (health2 <= 0) {
             venceu1.SetActive(true);
             FindObjectOfType<Tabuleiro>().enabled = false;
             fim = true;
         }
 
-        if (pontos2 >= 10) {
+        if (health1 <= 0) {
             venceu2.SetActive(true);
             FindObjectOfType<Tabuleiro>().enabled = false;
             fim = true;

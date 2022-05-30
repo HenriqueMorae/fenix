@@ -30,6 +30,9 @@ public class Tabuleiro : MonoBehaviour
     [Header("Multiplayer?")]
     [SerializeField] bool multiplayer;
 
+    [Header("Puzzle?")]
+    [SerializeField] bool puzzle;
+
     [Header("Espaços do Tabuleiro")]
     [SerializeField] RectTransform[] colunas = new RectTransform[7];
     [SerializeField] RectTransform[] linhas = new RectTransform[6];
@@ -371,11 +374,14 @@ public class Tabuleiro : MonoBehaviour
         }
 
         // give points on a multiplayer match
-        if (qualFigura > 7 && multiplayer) FindObjectOfType<TwoPlayerInput>().MaisPontos(playerAtual,4);
-        else if (qualFigura <= 7 && multiplayer) FindObjectOfType<TwoPlayerInput>().MaisPontos(playerAtual,3);
+        if (qualFigura > 7 && multiplayer && !puzzle) FindObjectOfType<TwoPlayerInput>().Dano(playerAtual,4);
+        else if (qualFigura <= 7 && multiplayer && !puzzle) FindObjectOfType<TwoPlayerInput>().Dano(playerAtual,3);
 
-        if (qualFigura > 7 && !multiplayer) FindObjectOfType<OnePlayerInput>().MaisPontos(playerAtual,4);
-        else if (qualFigura <= 7 && !multiplayer) FindObjectOfType<OnePlayerInput>().MaisPontos(playerAtual,3);
+        if (qualFigura > 7 && !multiplayer && !puzzle) FindObjectOfType<OnePlayerInput>().Dano(playerAtual,4);
+        else if (qualFigura <= 7 && !multiplayer && !puzzle) FindObjectOfType<OnePlayerInput>().Dano(playerAtual,3);
+
+        // complete the puzzle on a puzzle section
+        if (puzzle) FindObjectOfType<OnePlayerInput>().PuzzleConcluido();
 
         if (multiplayer) FindObjectOfType<TwoPlayerInput>().Completou();
         if (!multiplayer) FindObjectOfType<OnePlayerInput>().Completou();
