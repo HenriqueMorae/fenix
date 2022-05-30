@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TwoPlayerInput : MonoBehaviour
+public class OnePlayerInput : MonoBehaviour
 {
     [Header("Inputs")]
     [SerializeField] GameObject player1;
-    [SerializeField] GameObject player2;
+    [SerializeField] Player2 player2;
 
     [Header("Setas")]
     [SerializeField] GameObject setaP1;
@@ -22,7 +22,7 @@ public class TwoPlayerInput : MonoBehaviour
     [SerializeField] GameObject venceu2;
 
     [Header("Peças de Preview")]
-    [SerializeField] GameObject[] pecasPreview = new GameObject[14];
+    [SerializeField] GameObject[] pecasPreview = new GameObject[7];
 
     int pontos1;
     int pontos2;
@@ -34,7 +34,6 @@ public class TwoPlayerInput : MonoBehaviour
         fim = false;
         completouAlgo = false;
         player1.SetActive(true);
-        player2.SetActive(false);
         setaP1.SetActive(true);
         setaP2.SetActive(false);
         DesligaBolinhas();
@@ -59,26 +58,26 @@ public class TwoPlayerInput : MonoBehaviour
         if (pontos1 >= 10) {
             venceu1.SetActive(true);
             FindObjectOfType<Tabuleiro>().enabled = false;
+            FindObjectOfType<Player2>().enabled = false;
             fim = true;
         }
 
         if (pontos2 >= 10) {
             venceu2.SetActive(true);
             FindObjectOfType<Tabuleiro>().enabled = false;
+            FindObjectOfType<Player2>().enabled = false;
             fim = true;
         }
     }
 
     public void VezDoPlayer1() {
         player1.SetActive(false);
-        player2.SetActive(false);
         DesligaBolinhas();
         StartCoroutine("Espera1");
     }
 
     public void VezDoPlayer2() {
         player1.SetActive(false);
-        player2.SetActive(false);
         DesligaBolinhas();
         StartCoroutine("Espera2");
     }
@@ -92,7 +91,6 @@ public class TwoPlayerInput : MonoBehaviour
         }
         
         player1.SetActive(true);
-        player2.SetActive(false);
         setaP1.SetActive(true);
         setaP2.SetActive(false);
     }
@@ -106,9 +104,10 @@ public class TwoPlayerInput : MonoBehaviour
         }
 
         player1.SetActive(false);
-        player2.SetActive(true);
+        player2.EscolhendoUmaColuna();
         setaP1.SetActive(false);
         setaP2.SetActive(true);
+        VezDoPlayer1();
     }
 
     void DesligaBolinhas() {

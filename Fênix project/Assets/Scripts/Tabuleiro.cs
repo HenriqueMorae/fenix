@@ -40,6 +40,11 @@ public class Tabuleiro : MonoBehaviour
         figurasNaTelaP1.Clear();
         figurasNaTelaP2.Clear();
 
+        if (multiplayer)
+            FindObjectOfType<OnePlayerInput>().enabled = false;
+        else
+            FindObjectOfType<TwoPlayerInput>().enabled = false;
+
         // making all spaces empty
         for (int i = 0; i < 7; i++)
         {
@@ -48,6 +53,18 @@ public class Tabuleiro : MonoBehaviour
                 tabuleiro[j,i] = 0;
             }
         }
+    }
+
+    public int[,] TabuleiroNow() {
+        return tabuleiro;
+    }
+
+    public List<int> FigurasP1() {
+        return figurasNaTelaP1;
+    }
+
+    public List<int> FigurasP2() {
+        return figurasNaTelaP2;
     }
 
     // the combinations on screen will be added here
@@ -357,7 +374,11 @@ public class Tabuleiro : MonoBehaviour
         if (qualFigura > 7 && multiplayer) FindObjectOfType<TwoPlayerInput>().MaisPontos(playerAtual,4);
         else if (qualFigura <= 7 && multiplayer) FindObjectOfType<TwoPlayerInput>().MaisPontos(playerAtual,3);
 
-        FindObjectOfType<TwoPlayerInput>().Completou();
+        if (qualFigura > 7 && !multiplayer) FindObjectOfType<OnePlayerInput>().MaisPontos(playerAtual,4);
+        else if (qualFigura <= 7 && !multiplayer) FindObjectOfType<OnePlayerInput>().MaisPontos(playerAtual,3);
+
+        if (multiplayer) FindObjectOfType<TwoPlayerInput>().Completou();
+        if (!multiplayer) FindObjectOfType<OnePlayerInput>().Completou();
         StartCoroutine("Continua");        
     }
 
