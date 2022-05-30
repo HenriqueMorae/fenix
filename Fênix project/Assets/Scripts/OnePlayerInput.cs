@@ -85,9 +85,9 @@ public class OnePlayerInput : MonoBehaviour
     IEnumerator Espera1 () {
         yield return new WaitForSeconds(1f);
         
-        if (completouAlgo) {
+        while (completouAlgo) {
             completouAlgo = false;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
         }
         
         player1.SetActive(true);
@@ -98,9 +98,9 @@ public class OnePlayerInput : MonoBehaviour
     IEnumerator Espera2 () {
         yield return new WaitForSeconds(1f);
 
-        if (completouAlgo) {
+        while (completouAlgo) {
             completouAlgo = false;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2.25f);
         }
 
         player1.SetActive(false);

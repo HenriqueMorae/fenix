@@ -383,7 +383,7 @@ public class Tabuleiro : MonoBehaviour
     }
 
     IEnumerator Continua() {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.75f);
         ReposicionarPecas();
     }
 

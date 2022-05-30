@@ -26,10 +26,15 @@ public class Peca : MonoBehaviour
 
     public void CompletouFigura() {
         completo.color = Color.white;
-        LeanTween.alpha(gameObject.GetComponent<RectTransform>(), 0f, 1f).setOnComplete(Sumindo);
+        LeanTween.alpha(gameObject.GetComponent<RectTransform>(), 0f, 0.75f).setOnComplete(Sumindo);
     }
 
     void Sumindo() {
+        StartCoroutine("Calma");
+    }
+
+    IEnumerator Calma() {
+        yield return new WaitForSeconds(0.75f);
         Destroy(gameObject);
     }
 }
