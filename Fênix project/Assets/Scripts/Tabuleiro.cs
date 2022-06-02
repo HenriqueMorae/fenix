@@ -368,7 +368,7 @@ public class Tabuleiro : MonoBehaviour
             case 20: ProcurandoAFigura4(new int[] {-1,1,0,1,1,1,1,-1,1,0,2,0,0,-1,-1,0,1,0,-1,-1,-2,0,-1,0}); break;
             case 21: ProcurandoAFigura4(new int[] {0,1,0,2,1,2,0,-1,0,1,1,1,0,-2,0,-1,1,0,-1,-2,-1,-1,-1,0}); break;
             case 22: ProcurandoAFigura4(new int[] {1,1,2,1,3,2,-1,-1,1,0,2,1,-2,-1,-1,0,1,1,-3,-2,-2,-1,-1,-1}); break;
-            case 23: ProcurandoAFigura4(new int[] {-1,0,-2,0,-2,1,1,0,-1,0,-1,1,-2,0,1,0,0,1,-2,-1,1,-1,0,-1}); break;
+            case 23: ProcurandoAFigura4(new int[] {-1,0,-2,0,-2,1,1,0,-1,0,-1,1,2,0,1,0,0,1,2,-1,1,-1,0,-1}); break;
             case 24: ProcurandoAFigura4(new int[] {0,1,1,0,1,1,0,-1,1,-1,1,0,-1,0,-1,1,0,1,-1,-1,-1,0,0,-1}); break;
             default: break;
         }
