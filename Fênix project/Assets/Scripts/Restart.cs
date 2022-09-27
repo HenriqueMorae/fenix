@@ -21,6 +21,14 @@ public class Restart : MonoBehaviour
         SceneManager.LoadScene("PuzzleScene1");
     }
 
+    public void Livre1() {
+        SceneManager.LoadScene("1PGameScene");
+    }
+
+    public void Livre2() {
+        SceneManager.LoadScene("2PGameScene");
+    }
+
     public void Menu() {
         SceneManager.LoadScene("Menu");
     }

@@ -1896,6 +1896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -8501,7 +8502,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   peca1: {fileID: 1102750034499427775, guid: 02d6e21312e5c754fa9104acebbae83c, type: 3}
   peca2: {fileID: 1102750034499427775, guid: 4ddaddff412fc8e499c9f01a5fee6e52, type: 3}
-  multiplayer: 0
+  multiplayer: 1
+  puzzle: 0
   colunas:
   - {fileID: 382852885}
   - {fileID: 883226339}
@@ -8568,8 +8570,13 @@ MonoBehaviour:
   player2: {fileID: 1769944466}
   setaP1: {fileID: 778230761}
   setaP2: {fileID: 1124758984}
+  vidaInicialDaFenix: 0
   vida1: {fileID: 1160340493}
   vida2: {fileID: 1499626008}
+  imagensPraPiscarP1:
+  - {fileID: 0}
+  imagensPraPiscarP2:
+  - {fileID: 0}
   venceu1: {fileID: 842318692}
   venceu2: {fileID: 665632293}
   pecasPreview:

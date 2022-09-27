@@ -17,6 +17,10 @@ public class TwoPlayerInput : MonoBehaviour
     [SerializeField] Slider vida1;
     [SerializeField] Slider vida2;
 
+    [Header("Coisas Pra Piscar Vermelho")]
+    [SerializeField] RectTransform[] imagensPraPiscarP1 = new RectTransform[1];
+    [SerializeField] RectTransform[] imagensPraPiscarP2 = new RectTransform[1];
+
     [Header("Ganhou!")]
     [SerializeField] GameObject venceu1;
     [SerializeField] GameObject venceu2;
@@ -52,8 +56,8 @@ public class TwoPlayerInput : MonoBehaviour
 
         switch (player)
         {
-            case 1: health2 -= qtd; vida2.value = health2/10f; break;
-            case 2: health1 -= qtd; vida1.value = health1/10f; break;
+            case 1: health2 -= qtd; vida2.value = health2/10f; PiscaVermelhoP2(); break;
+            case 2: health1 -= qtd; vida1.value = health1/10f; PiscaVermelhoP1(); break;
             default: break;
         }
 
@@ -67,6 +71,22 @@ public class TwoPlayerInput : MonoBehaviour
             venceu2.SetActive(true);
             FindObjectOfType<Tabuleiro>().enabled = false;
             fim = true;
+        }
+    }
+
+    void PiscaVermelhoP1() {
+        foreach (RectTransform imagem in imagensPraPiscarP1)
+        {
+            imagem.GetComponent<Image>().color = Color.red;
+            LeanTween.color(imagem, Color.white, 1f);
+        }
+    }
+
+    void PiscaVermelhoP2() {
+        foreach (RectTransform imagem in imagensPraPiscarP2)
+        {
+            imagem.GetComponent<Image>().color = Color.red;
+            LeanTween.color(imagem, Color.white, 1f);
         }
     }
 
