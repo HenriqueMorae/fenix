@@ -4938,6 +4938,8 @@ MonoBehaviour:
   - {fileID: 0}
   imagensPraPiscarP2:
   - {fileID: 0}
+  textoVida1: {fileID: 0}
+  textoVida2: {fileID: 0}
   venceu1: {fileID: 842318692}
   venceu2: {fileID: 0}
   pecasPreview:
@@ -4970,6 +4972,8 @@ MonoBehaviour:
   - {fileID: 0}
   imagensPraPiscarP2:
   - {fileID: 0}
+  textoVida1: {fileID: 0}
+  textoVida2: {fileID: 0}
   venceu1: {fileID: 0}
   venceu2: {fileID: 0}
   pecasPreview:

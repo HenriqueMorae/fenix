@@ -2192,6 +2192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorial: {fileID: 0}
+  tutorial2: {fileID: 0}
   dialogo2: {fileID: 1475449892}
 --- !u!1 &883226338
 GameObject:
@@ -3754,6 +3755,8 @@ MonoBehaviour:
   - {fileID: 0}
   imagensPraPiscarP2:
   - {fileID: 0}
+  textoVida1: {fileID: 0}
+  textoVida2: {fileID: 0}
   venceu1: {fileID: 842318692}
   venceu2: {fileID: 0}
   pecasPreview:
@@ -3782,6 +3785,12 @@ MonoBehaviour:
   setaP2: {fileID: 0}
   vida1: {fileID: 0}
   vida2: {fileID: 0}
+  imagensPraPiscarP1:
+  - {fileID: 0}
+  imagensPraPiscarP2:
+  - {fileID: 0}
+  textoVida1: {fileID: 0}
+  textoVida2: {fileID: 0}
   venceu1: {fileID: 0}
   venceu2: {fileID: 0}
   pecasPreview:

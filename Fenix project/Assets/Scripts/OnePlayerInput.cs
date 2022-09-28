@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class OnePlayerInput : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class OnePlayerInput : MonoBehaviour
     [Header("Coisas Pra Piscar Vermelho")]
     [SerializeField] RectTransform[] imagensPraPiscarP1 = new RectTransform[1];
     [SerializeField] RectTransform[] imagensPraPiscarP2 = new RectTransform[1];
+
+    [Header("Textos da Vida")]
+    [SerializeField] RectTransform textoVida1;
+    [SerializeField] RectTransform textoVida2;
 
     [Header("Ganhou!")]
     [SerializeField] GameObject venceu1;
@@ -44,6 +49,8 @@ public class OnePlayerInput : MonoBehaviour
         DesligaBolinhas();
         health1 = vidaInicialDaFenix;
         health2 = 25;
+        if (textoVida1 != null) textoVida1.GetComponent<TextMeshProUGUI>().text = health1.ToString();
+        if (textoVida2 != null) textoVida2.GetComponent<TextMeshProUGUI>().text = health2.ToString();
     }
 
     public void Completou() {
@@ -71,6 +78,7 @@ public class OnePlayerInput : MonoBehaviour
             FindObjectOfType<Tabuleiro>().enabled = false;
             FindObjectOfType<Player2>().enabled = false;
             fim = true;
+            health2 = 0;
         }
 
         if (health1 <= 0) {
@@ -78,7 +86,11 @@ public class OnePlayerInput : MonoBehaviour
             FindObjectOfType<Tabuleiro>().enabled = false;
             FindObjectOfType<Player2>().enabled = false;
             fim = true;
+            health1 = 0;
         }
+
+        textoVida1.GetComponent<TextMeshProUGUI>().text = health1.ToString();
+        textoVida2.GetComponent<TextMeshProUGUI>().text = health2.ToString();
     }
 
     void PiscaVermelhoP1() {

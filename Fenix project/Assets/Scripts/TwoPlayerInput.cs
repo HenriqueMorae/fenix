@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TwoPlayerInput : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class TwoPlayerInput : MonoBehaviour
     [Header("Coisas Pra Piscar Vermelho")]
     [SerializeField] RectTransform[] imagensPraPiscarP1 = new RectTransform[1];
     [SerializeField] RectTransform[] imagensPraPiscarP2 = new RectTransform[1];
+
+    [Header("Textos da Vida")]
+    [SerializeField] RectTransform textoVida1;
+    [SerializeField] RectTransform textoVida2;
 
     [Header("Ganhou!")]
     [SerializeField] GameObject venceu1;
@@ -44,6 +49,8 @@ public class TwoPlayerInput : MonoBehaviour
         DesligaBolinhas();
         health1 = 10;
         health2 = 10;
+        textoVida1.GetComponent<TextMeshProUGUI>().text = health1.ToString();
+        textoVida2.GetComponent<TextMeshProUGUI>().text = health2.ToString();
     }
 
     public void Completou() {
@@ -65,13 +72,18 @@ public class TwoPlayerInput : MonoBehaviour
             venceu1.SetActive(true);
             FindObjectOfType<Tabuleiro>().enabled = false;
             fim = true;
+            health2 = 0;
         }
 
         if (health1 <= 0) {
             venceu2.SetActive(true);
             FindObjectOfType<Tabuleiro>().enabled = false;
             fim = true;
+            health1 = 0;
         }
+
+        textoVida1.GetComponent<TextMeshProUGUI>().text = health1.ToString();
+        textoVida2.GetComponent<TextMeshProUGUI>().text = health2.ToString();
     }
 
     void PiscaVermelhoP1() {
