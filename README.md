@@ -1,5 +1,6 @@
 # fenix
 Game for the GameDev.tv Game Jam 2022
+[Play Now!](https://henrique-moraes.itch.io/phoenix)
 
 ![Logo](https://img.itch.zone/aW1nLzkwNjk0MDYucG5n/315x250%23c/R3xRHH.png)
 
